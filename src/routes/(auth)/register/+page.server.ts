@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit'
-import type { Action, Actions, PageServerLoad } from '../../../../.svelte-kit/types/src/routes'
-import prisma from "../../../lib/prisma";
+import type { Action, Actions, PageServerLoad } from './$types'
+import prisma from "$lib/prisma";
 
 export const load: PageServerLoad = async () => {
   // todo
