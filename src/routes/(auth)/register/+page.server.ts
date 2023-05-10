@@ -11,6 +11,8 @@ const register: Action = async ({ request }) => {
   const username = data.get('name')
   const password = data.get('pass')
 
+  console.log('Register', {username, password})
+
   if (
     typeof username !== 'string' ||
     typeof password !== 'string' ||
@@ -23,6 +25,7 @@ const register: Action = async ({ request }) => {
   const user = await prisma.user.findUnique({
     where: { name: username },
   })
+
 
   if (user) {
     return fail(400, { user: true })

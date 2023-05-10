@@ -46,6 +46,6 @@
     </table>
 </div>
 <br/>
-<button class="btn-primary btn">
-    Cerrar Sesion
-</button>
+<form action="/logout" method="POST">
+    <button class="btn btn-primary" type="submit">Cerrar Sesion</button>
+</form>
