@@ -17,7 +17,7 @@
   </div>
 
   {#if form?.user}
-    <p class="error">Usuario existe.</p>
+    <p class="error">Nombre de Usuario existe.</p>
   {/if}
 
   <button type="submit" class="btn btn-primary mr-auto">Registrar</button>
