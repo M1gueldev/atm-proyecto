@@ -1,5 +1,8 @@
+<script lang="ts">
+    import {page} from '$app/stores'
+</script>
 <h1 class="text-2xl">
-    Bienvenido User
+    Bienvenido {$page.data.user.name}
 </h1>
 <br/>
 <div class="overflow-x-auto">
@@ -8,7 +11,7 @@
         <thead>
         <tr>
             <th></th>
-            <th>Cuenta</th>
+            <th>Nro Cuenta</th>
             <th>Balance</th>
             <th></th>
             <th></th>
@@ -17,48 +20,28 @@
         </thead>
         <tbody>
         <!-- row 1 -->
+        {#each $page.data.user.Account  as acc, i}
         <tr>
-            <th>1</th>
-            <td>2404000901234</td>
-            <td>Bs. 233</td>
+            <th>{i+1}</th>
+            <td>{acc.id + 10000000000}</td>
+            <td>Bs. {acc.balance}</td>
             <td>
-                <button class="btn btn-outline">
+                <a href="retiro/{acc.id}" class="btn btn-outline">
                     Retiro
-                </button>
+                </a>
             </td>
             <td>
-                <button class="btn btn-outline">
+                <a  href="transferencia/{acc.id}" class="btn btn-outline">
                     Transferencia
-                </button>
+                </a>
             </td>
             <td>
-                <button class="btn btn-outline">
+                <a href="deposito/{acc.id}" class="btn btn-outline">
                     Deposito
-                </button>
+                </a>
             </td>
         </tr>
-        <!-- row 2 -->
-        <tr>
-            <th>2</th>
-            <td>72340374018738</td>
-            <td>Bs. 874</td>
-
-             <td>
-                <button class="btn btn-outline">
-                    Retiro
-                </button>
-            </td>
-            <td>
-                <button class="btn btn-outline">
-                    Transferencia
-                </button>
-            </td>
-            <td>
-                <button class="btn btn-outline">
-                    Deposito
-                </button>
-            </td>
-        </tr>
+            {/each}
         </tbody>
     </table>
 </div>
