@@ -1,10 +1,9 @@
-<script>
-    let form = {}
-</script>
 <h1 class="mx-auto text-2xl">
-    Inicio de Sesion
+    Inicio
 </h1>
+<!--
 <form class="flex justify-center flex-col gap-4"
+
     action="?/login" method="POST">
     <div class="form-control w-full max-w-xs">
         <label class="label">
@@ -28,3 +27,4 @@
   {/if}
     <input type="submit" value="Iniciar Sesion" class="btn btn-primary mr-auto">
 </form>
+-->

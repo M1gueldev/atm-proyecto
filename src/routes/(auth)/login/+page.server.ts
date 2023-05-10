@@ -1,16 +1,20 @@
 import { fail, redirect } from '@sveltejs/kit'
 import type { Action, Actions, PageServerLoad } from './$types'
-import prisma from "../../lib/prisma";
+import prisma from "$lib/prisma";
 
 
-export const load: PageServerLoad = async () => {
-  // todo
+export const load: PageServerLoad = async ({locals}) => {
+  if (locals.user) {
+    throw redirect(302, '/balance')
+  }
 }
 
 const login: Action = async ({ cookies, request }) => {
   const data = await request.formData()
-  const username = data.get('username')
-  const password = data.get('password')
+  const username = data.get('name')
+  const password = data.get('pass')
+
+  console.log('User Creds: ', {username, password})
 
   if (
     typeof username !== 'string' ||
@@ -22,6 +26,8 @@ const login: Action = async ({ cookies, request }) => {
   }
 
   const user = await prisma.user.findUnique({ where: { name: username } })
+
+  console.log('User get: ', user)
 
   if (!user) {
     return fail(400, { credentials: true })
@@ -47,7 +53,7 @@ const login: Action = async ({ cookies, request }) => {
   })
 
   // redirect the user
-  throw redirect(302, '/')
+  throw redirect(302, '/balance')
 }
 
 export const actions: Actions = { login }
